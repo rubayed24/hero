@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+
+ <!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-window">
+    <div class="hero-content">
+      <h1>Monir Khaan
+      </h1>
+      <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, quo aliquam exercitationem distinctio natus quisquam possimus blanditiis ad, dicta unde commodi labore accusantium corporis voluptatum earum vitae ea sequi tenetur!</h2>
+      <p>Driving excellence through innovative administration and strategic leadership.</p>
+      <a href="#contact" class="cta-button">
+        <i class="fas fa-handshake"></i> Get in Touch
+      </a>
+    </div>
+  </div>
+  <div class="light-trails"></div>
+  <div class="water-overlay"></div>
+  <!-- Left side -->
+<div class="side-left">
+  <a href="https://linkedin.com" target="_blank"> fafa </a>
+  <a href="https://github.com" target="_blank">GitHub</a>
+  <a href="mailto:your@email.com">Email</a>
+</div>
+
+<!-- Right side -->
+<div class="side-right">
+  <span>Scroll Down ⬇</span>
+</div>
+
+</section>
+
+<style>
+/* Base hero */
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Background image */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url(3d-render-eagle.jpg ) center/cover no-repeat;
+  opacity: 0.2;
+  animation: bgFadeIn 2s ease-in forwards;
+  z-index: 0;
+}
+
+/* Dark overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.24), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+/* Water overlay */
+.water-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(0,240,255,0.2), transparent 40%),
+              radial-gradient(circle at 70% 70%, rgba(255,0,170,0.2), transparent 40%);
+  mix-blend-mode: screen;
+  animation: waterFlow 6s ease-in-out infinite alternate;
+  z-index: 2;
+  opacity: 0.1;
+}
+
+/* Light streaks */
+.light-trails {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05));
+  opacity: 0;
+  animation: streakAppear 1s ease forwards 2.9s, streakMove 6s linear infinite 1s;
+  z-index: 3;
+
+}
+
+/* Hero floating window */
+.hero-window {
+  position: relative;
+  z-index: 4;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(18px);
+  padding: 40px 30px;
+  border: 42px solid rgba(0, 213, 255, 0.09);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  max-width: 700px;
+  opacity: 0;
+  animation: windowFadeIn 0.5s forwards 5.1s;
+  animation: windowFadeIn 0.5s forwards 2.2s; /* window fade in */
+  overflow: hidden;
+}
+
+/* border Styling */
+  .hero-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px  solid rgba(0, 213, 255, 0.285)  ; /* start at 0 */
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  animation: borderGrow 1.2s forwards 2.7s; /* starts just after window fade-in */
+}
+
+/* Keyframes for border “growing” */
+@keyframes borderGrow {
+  0% { border-width: 0px; }
+  100% { border-width: 4px; } /* final border thickness */
+}
+
+/* Example window fade-in */
+@keyframes windowFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Content styling with sequential fade-ins */
+.hero-content h1, .hero-content h2, .hero-content p, .cta-button {
+  opacity: 0;
+}
+  
+.hero-content h1 {
+  font-family: Warriatron, sans-serif;
+  font-size: 2.5rem;
+  color: #fffffff5;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  margin: 0;
+}
+
+.hero-content{
+
+  display:flex;
+  flex-direction:column;
+  gap: 15px;
+  align-items: center;
+}
+
+.hero-content h1 { animation: fadeFromTop 1s forwards 2.5s; }
+.hero-content h2 { animation: fadeFromLeft 1s forwards 3s; }
+.hero-content p { animation: fadeFromRight 1s forwards 3.5s; }
+.cta-button { animation: fadeFromBottom 1s forwards 4s; }
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px 2px 0 solid var(--primary,#11ff0060);
+  background: transparent;
+  color: #fff;
+  transition: all 0.8s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.cta-button::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: linear-gradient(180deg,transparent,rgba(250, 250, 250, 0.311),transparent);
+  transition: all 0.5s;
+}
+
+.cta-button:hover::before { left:100%; }
+.cta-button:hover { background: var(--primary,#00f0ff); color:#000; }
+
+/* Keyframes */
+@keyframes bgFadeIn { from {opacity:0; transform:scale(1.05);} to {opacity:1; transform:scale(1);} }
+@keyframes streakAppear { from{opacity:0;} to{opacity:1;} }
+@keyframes streakMove { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+@keyframes waterFlow { 0%{background-position:0 0;} 100%{background-position:100% 100%;} }
+@keyframes fadeFromTop { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeFromLeft { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateX(0);} }
+@keyframes fadeFromRight { from {opacity:0; transform:translateX(40px);} to {opacity:1; transform:translateX(0);} }
+@keyframes fadeFromBottom { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+@keyframes windowFadeIn { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
+
+/*
+ Responsive 
+*/
+
+ @media(max-width:768px){
+  .hero-window{padding:25px 20px;}
+  .hero-content h1{font-size:2rem;}
+  .hero-content h2{font-size:1rem;}
+  .hero-content p{font-size:1rem;}
+}
+/* Left side links */
+.side-left {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 5;
+}
+
+.side-left a {
+  writing-mode: vertical-rl;
+  text-decoration: none;
+  color: linear-gradient(45deg, #780a69fb, #ff00aa);
+  font-weight: 600;
+  transition: color 0.3s;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  animation: linear-gradient  3s infinite alternate;
+}
+@keyframes linear-gradient {
+  from { color: #fff; }
+  to { color: linear-gradient(45deg, #00f0ff, #ff00aa); }
+  
+}
+
+.side-left a:hover {
+text-decoration: dotted top line;
+  color: #adf6fb1d;
+
+}
+
+/* Right side hint / scroll indicator */
+.side-right {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-weight: 500;
+  writing-mode: vertical-rl;
+  text-align: center;
+  z-index: 5;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from { transform: translateY(-50%) translateX(0); }
+  to { transform: translateY(-50%) translateX(5px); }
+}
+
+</style>
+
+
+</body>
+</html>
